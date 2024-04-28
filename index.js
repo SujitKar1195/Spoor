@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const userRoute = require('./routes/user');
@@ -8,6 +9,15 @@ const Task = require('./db/taskModel');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+let corsOptions = {
+  origin: [
+    'http://localhost:8000',
+    'https://vercel.com/skar54322gmailcoms-projects/b-goal-ways',
+  ],
+};
+
+app.use(cors(corsOptions));
 
 const connectDatabase = require('./db/connection');
 const {checkForAuthenticationCookie} = require('./middlewares/authentication');
