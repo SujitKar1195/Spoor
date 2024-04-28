@@ -1,0 +1,103 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
+
+
+
+<script>
+	// loading tasks starts
+	document.querySelectorAll('.form-check-input').forEach(function(checkbox) {
+		if(checkbox.checked) {
+			var taskId=checkbox.getAttribute('data-task-id');
+			let completedTask=document.getElementById(taskId);
+			let parentNode=completedTask.parentNode.firstElementChild;
+			parentNode.setAttribute('class','todo-item bg-success');
+		}
+	});
+	// loading tasks end
+
+	// task completed start
+	document.querySelectorAll('.form-check-input').forEach(function(checkbox) {
+		checkbox.addEventListener('change',function() {
+			const taskId=this.getAttribute('data-task-id');
+			let completed=this.checked;
+
+			markTaskAsCompleted(taskId,completed);
+		});
+	});
+
+	function markTaskAsCompleted(taskId,completed) {
+
+		fetch('/task/complete',{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({taskId: taskId,isCompleted: completed})
+		})
+			.then(function(response) {
+				if(response.ok) {
+					return response.json();
+				} else {
+					console.log('error');
+				}
+			})
+			.then((data) => {
+				const isCompleted=data.isCompleted;
+				if(isCompleted) {
+					let completedTask=document.getElementById(taskId);
+					completedTask.classList.add('firecracker-animation');
+					let parentNode=completedTask.parentNode.firstElementChild;
+					parentNode.setAttribute('class','todo-item bg-success');
+				}
+				else {
+					let completedTask=document.getElementById(taskId);
+					completedTask.classList.add('firecracker-animation');
+					let parentNode=completedTask.parentNode.firstElementChild;
+					parentNode.setAttribute('class','todo-item');
+				}
+			})
+			.catch(function(error) {
+				console.error('Network error occurred');
+			});
+	}
+	// task completed end
+
+
+	// task deleted start
+	document.querySelectorAll('.delete-button').forEach(function(deletebtn) {
+		deletebtn.addEventListener('click',function() {
+			let taskId=this.getAttribute('id');
+			deleteTask(taskId);
+		});
+	});
+
+	function deleteTask(taskId) {
+		fetch('/task/delete',{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({taskId: taskId})
+		})
+			.then(function(response) {
+				if(response.ok) {
+					return response.json();
+				} else {
+					console.log('error');
+				}
+			})
+			.then((data) => {
+				let completedTask=document.getElementById(taskId);
+				let parentNode=completedTask.parentNode;
+				let parentNodeSparent=parentNode.parentElement;
+				parentNodeSparent.removeChild(parentNode);
+			})
+			.catch(function(error) {
+				console.error('Network error occurred');
+			});
+	}
+	// task deleted end
+
+
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<style>
+		.container1 {
+			position: relative;
+			height: 85vh;
+
+		}
+
+		.inner {
+			background-color: rgb(172, 241, 241);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 35%;
+			height: 60%;
+			border-radius: 10px;
+		}
+
+		form {
+			padding: 2rem;
+		}
+
+		table {
+			margin: 0 auto;
+		}
+
+		table th {
+			color: rgb(7, 7, 41);
+		}
+	</style>
+	<%- include('./partials/head')%>
+		<title>Signup</title>
+</head>
+
+<body>
+	<%- include('./partials/nav')%>
+
+
+		<div class="container1">
+			<div class="inner">
+				<div class="signup">
+					<h2 class="text-center text-primary mt-2">SignUp</h2>
+					<form action="/user/signup" method="post">
+						<table id="signup">
+							<tr>
+								<th>Name:</th>
+								<td><input type="text" name="name" id="name" placeholder="Sujit kar"
+										class="form-control" required></td>
+							</tr>
+							<tr>
+								<th>Email:</th>
+								<td><input type="email" name="email" id="email" placeholder="example@gmail.com"
+										class="form-control" required></td>
+							</tr>
+
+							<tr>
+								<th>Password: </th>
+								<td>
+									<input type="password" name="password" id="password" class="form-control" required>
+								</td>
+							</tr>
+						</table>
+						<input class="btn btn-primary d-block mx-auto mt-4" type="submit" value="Signup" id="submit">
+					</form>
+
+					<h5 class="text-center">Have you an account?<a href="/user/login">Login</a></h5>
+				</div>
+			</div>
+		</div>
+
+		<%- include('./partials/script')%>
+
+</body>
+
+</html>

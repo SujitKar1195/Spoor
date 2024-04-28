@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('./partials/head')%>
+		<title>Add Task</title>
+</head>
+
+<body>
+	<%- include('./partials/nav')%>
+		<div class="container mt-3">
+			<form action="/task/add-task" method="post">
+
+				<div class=" mb-3">
+					<label for="title" class="form-label">Title</label>
+					<input type="text" class="form-control" id="title" name="title" required="true"
+						placeholder="Give a title">
+				</div>
+
+				<div class="mb-3">
+					<label for="body" class="form-label">Body</label>
+					<textarea class="form-control" id="body" rows="3" name="body" required="true"
+						placeholder="Write something..."></textarea>
+				</div>
+
+				<div class="mb-3">
+					<button class="btn btn-info">Add</button>
+				</div>
+
+			</form>
+		</div>
+		<%- include('./partials/script')%>
+</body>
+
+</html>

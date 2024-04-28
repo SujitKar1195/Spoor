@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('./partials/head')%>
+		<style>
+			input:focus {
+				color: blue;
+			}
+
+			div table {
+				margin: auto auto;
+			}
+
+			#task:focus {
+				background-color: rgb(255, 255, 255);
+				color: rgb(20, 16, 16);
+			}
+		</style>
+		<title>BGoAlways</title>
+</head>
+
+<body>
+	<%- include('./partials/nav')%>
+		<div class="container-fluid home-container">
+			<h1 class="text-center text-warning fs-2">Tasks</h1>
+			<div class="container mt-3 ">
+				<div class="row row-cols-6">
+					<%tasks.forEach(task=> {%>
+						<div class="my-2 mx-2  p-4">
+							<div class="todo-item" id="<%=task._id%>">
+								<div class="todo-title">
+									<%=task.title%>
+								</div>
+								<div class="todo-description">
+									<%=task.body%>
+								</div>
+								<div class="todo-completed">
+									<input class="form-check-input" type="checkbox" id="completed"
+										data-task-id="<%=task._id%>" <%=task.isCompleted ? 'checked' : '' %>>
+									<label for="completed">Task Completed</label>
+								</div>
+								<button class="delete-button" id="<%=task._id%>">Delete Task</button>
+							</div>
+						</div>
+						<%});%>
+
+				</div>
+			</div>
+
+
+
+
+		</div>
+
+		<%- include('./partials/script')%>
+</body>
+
+</html>
