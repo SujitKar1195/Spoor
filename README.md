@@ -1,6 +1,6 @@
-﻿# [BGoAlways](https://b-goal-ways.vercel.app/)
+﻿# [Spoor](https://spoor-zeta.vercel.app/)
 
-Welcome to BGoalWays, your To-Do app for organizing tasks and achieving your goals! This simple yet powerful to-do app helps you stay focused and productive. Below, you'll find everything you need to know to get started with BGoalWays:
+Welcome to Spoor, your To-Do app for organizing tasks and achieving your goals! This simple yet powerful to-do app helps you stay focused and productive. Below, you'll find everything you need to know to get started with BGoalWays:
 
 ## Features:
 - **User Authentication:** Securely create an account and log in to access your tasks.
@@ -14,7 +14,7 @@ Welcome to BGoalWays, your To-Do app for organizing tasks and achieving your goa
 
 ## How to Use:
 1. **Signup/Login:**
-    - Visit the [BGoAlways](https://b-goal-ways.vercel.app/) to the signup page to create an account.
+    - Visit the [Spoor](https://spoor-zeta.vercel.app/) to the signup page to create an account.
     - Once registered, log in using your credentials to access your account.
 
 2. **Add a Task:**
@@ -54,4 +54,4 @@ This tech stack combination provides a robust foundation for developing BGoalWay
 ## Start Achieving Your Goals Today!
 Sign up for BGoalWays and take control of your tasks and goals. Stay tuned for future updates and enhancements to make your task management experience even better!
 
-visit [BGoAlways](https://b-goal-ways.vercel.app/).
+visit [Spoor](https://spoor-zeta.vercel.app/).
